@@ -1,6 +1,8 @@
 import {formatURL} from "../utils/urlFormatter";
 import {Parameters} from "../models/parameters";
 
+const fetch = require('node-fetch');
+
 export async function getPhotos(rover: string, params: Array<[Parameters, number | string]>) {
     try {
         const url = formatURL(rover, params);

@@ -1,6 +1,14 @@
 import {Express, Request, Response} from "express";
-import {getRoversHandler} from "./controllers/roverController";
+import {
+    getRoverCamerasHandler,
+    getRoverPhotosHandler,
+    getRoverSolHandler,
+    getRoverTypesHandler
+} from "./controllers/roverController";
 
-function routes(app: Express) {
-    app.get('/rover', getRoversHandler);
+export function routes(app: Express) {
+    app.get('/rover', getRoverTypesHandler);
+    app.get('/rover/:name/sol', getRoverSolHandler); //getMaxSol
+    app.get('/rover/:name/:sol/cameras/', getRoverCamerasHandler);
+    app.get('/rover/:name/:sol/:camera/photos', getRoverPhotosHandler);
 }
